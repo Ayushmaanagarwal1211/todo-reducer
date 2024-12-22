@@ -10,19 +10,24 @@ export default function taskReducer(state,action){
         return action.arr
     }
     case "EDIT": {
-      state =  state.map((task) => 
-        task.id === action.id
-          ? { ...task, task: action.input } 
-          : task  
-      );
-      return state
+      if(isValidId(state,action.id)){
+        state =  state.map((task) => 
+          task.id === action.id
+            ? { ...task, task: action.input } 
+            : task  
+        );
+        return state
+      }
     }
     
     case "DELETE" : {
-    state = state.filter((data) => data.id !== action.id);
-      return state  
+      if(isValidId(state, action.id)){
+        state = state.filter((data) => data.id !== action.id);
+          return state  
+      }
     }
     case "STATUS_CHANGE" :  { 
+      if(isValidId(state, action.id)){
       state = state.map((task) => {
       if (task.id === action.id) {
         return {
@@ -33,6 +38,7 @@ export default function taskReducer(state,action){
       return task
     })
     return state
+  }
   }
     case "ADD_TASK" : {
       state = [...state, {...action.task, id:genId(state)}]
@@ -47,4 +53,10 @@ function genId(tasks){
       max = Math.max(i.id , max)
   }
   return max == -Infinity ? 0 : max+1
+}
+function isValidId(tasks,id){
+  for(let i of tasks){
+    if(i.id == id){return true}
+  }
+  return false
 }
