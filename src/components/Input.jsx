@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 
 export default function Input({dispatch}) {
-    let [task,setTask] = useState({task:"",color:"green",status:"active"})
+    const [task,setTask] = useState({task:"",color:"green",status:"active"})
     function handleChange(e){
         let obj = {...task}
         obj[e.target.name] = e.target.value

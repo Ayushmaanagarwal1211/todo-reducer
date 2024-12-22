@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-let filter_array = ["all","completed","active"]
+const filter_array = ["all","completed","active"]
 export default function FilterByStatus({filter,setFilter}) {
   function handleChange(e){
       setFilter(e.target.name)

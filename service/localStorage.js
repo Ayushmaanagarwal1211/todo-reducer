@@ -1,5 +1,5 @@
 export async function getDateFromBackend(){
-    let data = localStorage.getItem("tasks") || '[]'
+    const data = localStorage.getItem("tasks") || '[]'
     return JSON.parse(data)
 }
 export function setDataToBackend(data){

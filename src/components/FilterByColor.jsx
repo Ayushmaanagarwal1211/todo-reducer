@@ -1,9 +1,9 @@
 import React  from 'react'
 import FilterInput from './FilterInput'
-let colors = ["blue","green","orange","purple","red"]
+const colors = ["blue","green","orange","purple","red"]
 export default function FilterByColor({setChoices,choices}) {
       function handleChange(e){
-          let name = e.target.name
+          const name = e.target.name
           if(!colors.includes(name)){return }
           return  !choices.includes(name) ? 
           setChoices(prev=>[...prev,name]) :

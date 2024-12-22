@@ -3,8 +3,8 @@ import { FaCheck, FaPenToSquare, FaX } from "react-icons/fa6";
 import Context from "./Context";
 
 export default function Task({ task ,dispatch}) {
-  let [isEdit, setIsEdit] = useState(false);
-  let [input, setInput] = useState(task.task);
+  const [isEdit, setIsEdit] = useState(false);
+  const [input, setInput] = useState(task.task);
 
   function handleClick() {
     dispatch({type:"STATUS_CHANGE",id:task.id})
